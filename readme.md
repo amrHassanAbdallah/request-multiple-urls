@@ -28,16 +28,16 @@ but the code and data will vary depend on the following:
   - Any HTTP status code outside the range of 200-299 as an error
 - **Client errors:** network errors, such as DNS resolution failures or connection timeouts, that are not related to the server's response. These errors are typically thrown by the underlying HTTP client library used by Axios (such as XMLHttpRequest or the Node.js http/https modules)
 ## Future improvements
-- Could use retries and circuit breakers to improve the performance and relability
-- IP pool to aviod server IP blocking
+- Could use retries and circuit breakers to improve the performance and reliability
+- Rotating IPs to avoid server IP blocking
 - Configure the timeout per request
 - Configure the logging to allow other loggers as well as the log level
 - Collect/Expose stats regarding failures and successes in requests 
 - Add lint rules to maintain code quality
 - Add CI/CD pipeline to run the tests and publishing new tags
-- Eventually we will run out of memory and if we didn't we will be limited by the number of requests/cores/memory/SLA meaning we will need multiple machines to process the work something similar to the following.
+- Eventually we will run out of memory and if we didn't we will be limited by the number of requests/cores or maybe we have a strict SLA about timing, meaning we will need multiple machines to process the work something similar to the following.
   - ![img.png](img.png)
     - Long-term storage: for storing requests responses, could be NoSQL due to the nature of request's response
     - Processors for processing the URL jobs
     - In-memory DB: for storing the circuit break info as well as the stats information
-    - Queue: for buffering the load and relability to make sure that the procesors are going to process the request job no matter what.
+    - Queue: for buffering the load and reliability to make sure that the processors are going to process the request job no matter what.
